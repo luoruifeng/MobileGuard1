@@ -24,7 +24,7 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.db.dao.BlackNumberD
  * Created by LRF on 2017/11/5.
  */
 
-public class InterceptCallReciever extends BroadcastReceiver{
+public class InterceptCallReciever extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         SharedPreferences mSP=context.getSharedPreferences ( "config", Context.MODE_PRIVATE );
@@ -46,14 +46,14 @@ public class InterceptCallReciever extends BroadcastReceiver{
                     int blackContactMode=dao.getBlackContactMode ( mIncomingNumber );
                     if (blackContactMode == 1 || blackContactMode == 3) {
                         Uri uri=Uri.parse ( "content://call_log/calls" );
-                        context.getContentResolver ().registerContentObserver ( uri, true, new CallLogObserver ( new Handler(), mIncomingNumber, context ) );
+                        context.getContentResolver ().registerContentObserver ( uri, true, new CallLogObserver ( new Handler (), mIncomingNumber, context ) );
                         endCall ( context );
                     }
                     break;
             }
         }
     }
-    private class CallLogObserver extends ContentObserver {
+    private class CallLogObserver extends ContentObserver{
         private String incomingNumber;
         private Context context;
         public CallLogObserver(Handler handler,String incomingNumber,Context context){

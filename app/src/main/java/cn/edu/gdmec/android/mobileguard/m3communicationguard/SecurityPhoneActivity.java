@@ -29,10 +29,11 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     private BlackNumberDao dao;
     private ListView mListView;
     private int pagenumber = 0;
-
+    //private int pagesize = 4;
+    //补坑
     private int pagesize = 15;
     private int totalNumber;
-    private List<BlackContactInfo> pageBlackNumber = new ArrayList<BlackContactInfo>(  );
+    private List<BlackContactInfo> pageBlackNumber = new ArrayList<BlackContactInfo> (  );
     private BlackContactAdapter adapter;
 
     private void fillData(){
@@ -64,7 +65,6 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
             }
         }
     }
-
     private void initView(){
         findViewById ( R.id.rl_titlebar ).setBackgroundColor ( getResources ().getColor ( R.color.bright_purple ) );
         ImageView mLeftImgv = (ImageView) findViewById ( R.id.imgv_leftbtn );
@@ -111,13 +111,13 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View view){
         switch (view.getId ()){
             case R.id.imgv_leftbtn:
                 finish ();
                 break;
             case R.id.btn_addblacknumber:
-                startActivity ( new Intent( this, AddBlackNumberActivity.class ) );
+                startActivity ( new Intent ( this, AddBlackNumberActivity.class ) );
                 break;
         }
     }

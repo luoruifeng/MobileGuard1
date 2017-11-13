@@ -17,7 +17,7 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.entity.BlackContact
  * Created by LRF on 2017/11/5.
  */
 
-public class BlackContactAdapter extends BaseAdapter{
+public class BlackContactAdapter extends BaseAdapter {
     private List<BlackContactInfo> contactInfos;
     private Context context;
     private BlackNumberDao dao;
@@ -26,10 +26,10 @@ public class BlackContactAdapter extends BaseAdapter{
     class ViewHolder{
         TextView mNameTV;
         TextView mModeTV;
+        TextView mStyleTV;
         View mContactImgv;
         View mDeleteView;
     }
-
     public interface BlackConactCallBack{
         void DataSizeChanged();
     }
@@ -44,22 +44,19 @@ public class BlackContactAdapter extends BaseAdapter{
         dao = new BlackNumberDao ( context );
     }
     @Override
-    public int getCount() {
+    public int getCount(){
         return contactInfos.size ();
     }
-
     @Override
-    public Object getItem(int i) {
+    public Object getItem(int i){
         return contactInfos.get ( i );
     }
-
     @Override
-    public long getItemId(int i) {
+    public long getItemId(int i){
         return i;
     }
-
     @Override
-    public View getView(final int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup){
         ViewHolder holder = null;
         if (view == null){
             view = View.inflate ( context,
@@ -67,6 +64,7 @@ public class BlackContactAdapter extends BaseAdapter{
             holder = new ViewHolder ();
             holder.mNameTV = (TextView) view.findViewById ( R.id.tv_black_name );
             holder.mModeTV = (TextView) view.findViewById ( R.id.tv_black_mode );
+            holder.mStyleTV = (TextView ) view.findViewById ( R.id.tv_black_style );
             holder.mContactImgv = view.findViewById ( R.id.view_black_icon );
             holder.mDeleteView = view.findViewById ( R.id.view_black_delete );
             view.setTag ( holder );
@@ -77,10 +75,18 @@ public class BlackContactAdapter extends BaseAdapter{
                 + contactInfos.get ( i ).phoneNumber + ")");
         holder.mModeTV.setText ( contactInfos.get ( i ).getModeString(
                 contactInfos.get ( i ).mode ) );
+
+
+
         holder.mNameTV.setTextColor ( context.getResources ().getColor (
                 R.color.bright_purple ) );
         holder.mModeTV.setTextColor ( context.getResources ().getColor (
                 R.color.bright_purple ) );
+
+        holder.mStyleTV.setText ( contactInfos.get ( i ).style );
+        holder.mStyleTV.setTextColor ( context.getResources ().getColor (
+                R.color.bright_purple ) );
+
         holder.mContactImgv.setBackgroundResource ( R.drawable.brightpurple_contact_icon );
         holder.mDeleteView.setOnClickListener ( new View.OnClickListener (){
             @Override
