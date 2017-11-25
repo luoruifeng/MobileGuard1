@@ -23,6 +23,7 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetUpPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivity;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.AppManagerActivity;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanActivity;
+import cn.edu.gdmec.android.mobileguard.m6cleancache.CacheClearListActivity;
 
 public class HomeActivity extends AppCompatActivity {
     private GridView gv_home;
@@ -61,6 +62,10 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 3:
                         startActivity ( VirusScanActivity.class );
+                        break;
+                    case 4:
+                        //缓存清理
+                        startActivity(CacheClearListActivity.class);
                         break;
 
                 }
@@ -141,13 +146,15 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void cancel() {
-
+                mInPswdDialog.dismiss ();
             }
 
             @Override
-            public void cancle(){
-                mInPswdDialog.dismiss ();
+            public void cancle() {
+
             }
+
+
         });
         mInPswdDialog.setCancelable ( true );
         mInPswdDialog.show ();
