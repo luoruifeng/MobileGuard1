@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import cn.edu.gdmec.android.mobileguard.App;
+import cn.edu.gdmec.android.mobileguard.m9advancedtools.service.AppLockService;
 
 /**
  * Created by lenovo on 2017/10/22.
@@ -12,7 +13,10 @@ import cn.edu.gdmec.android.mobileguard.App;
 
 public class BootCompleteReceiver extends BroadcastReceiver{
     @Override
-    public void onReceive(Context context, Intent intent) {
-        ((App)(context.getApplicationContext())).correctSIM();
+    public void onReceive(Context context, Intent intent){
+        ((App)(context.getApplicationContext ())).correctSIM ();
+
+        //启动程序锁服务
+        context.startService ( new Intent ( context, AppLockService.class ) );
     }
 }

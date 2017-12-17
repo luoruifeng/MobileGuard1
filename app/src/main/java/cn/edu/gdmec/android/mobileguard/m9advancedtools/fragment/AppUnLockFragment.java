@@ -32,10 +32,11 @@ public class AppUnLockFragment extends Fragment {
 
     private TextView mUnLockTV;
     private ListView mUnLockLV;
-    List<AppInfo> unlockApps = new ArrayList<AppInfo>();
+    List<AppInfo> unlockApps = new ArrayList<AppInfo> ();
     private AppLockAdapter adapter;
     private AppLockDao dao;
-    private Uri uri = Uri.parse("content://cn.edu.gdmec.android.mobileguard.applock");
+    //private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);
+    private Uri uri = Uri.parse("content://cn.edu.gdmec.android.mobileguard.m9advancedtools.applock");
     private List<AppInfo> appInfos;
     private Handler mhandler = new Handler(){
         public void handleMessage(android.os.Message msg) {
@@ -71,12 +72,13 @@ public class AppUnLockFragment extends Fragment {
         fillData();
         initListener();
         super.onResume();
-        getActivity().getContentResolver().registerContentObserver(uri, true, new ContentObserver(new Handler()) {
+        getActivity().getContentResolver().registerContentObserver(uri, true, new ContentObserver (new Handler()) {
             @Override
             public void onChange(boolean selfChange) {
                 fillData();
             }
         });
+     /*   super.onResume ();*/
     }
 
     public void fillData() {
@@ -86,7 +88,7 @@ public class AppUnLockFragment extends Fragment {
             public void run() {
                 for(AppInfo info : appInfos){
                     if(!dao.find(info.packageName)){
-                        //未加锁
+                        //  未  加锁
                         info.isLock = false;
                         aInfos.add(info);
                     }

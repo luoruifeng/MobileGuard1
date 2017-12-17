@@ -40,7 +40,20 @@ public class AppLockActivity extends FragmentActivity implements View.OnClickLis
         initView();
         initListener();
     }
-
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.imgv_leftbtn:
+                finish();
+                break;
+            case R.id.tv_lock:
+                mAppViewPager.setCurrentItem(1);
+                break;
+            case R.id.tv_unlock:
+                mAppViewPager.setCurrentItem(0);
+                break;
+        }
+    }
     private void initListener() {
         mAppViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
@@ -96,23 +109,9 @@ public class AppLockActivity extends FragmentActivity implements View.OnClickLis
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.imgv_leftbtn:
-                finish();
-                break;
-            case R.id.tv_lock:
-                mAppViewPager.setCurrentItem(1);
-                break;
-            case R.id.tv_unlock:
-                mAppViewPager.setCurrentItem(0);
-                break;
-        }
 
-    }
 
-    class MyAdapter extends FragmentPagerAdapter {
+    class MyAdapter extends FragmentPagerAdapter{
 
         public MyAdapter(FragmentManager fm) {
             super(fm);

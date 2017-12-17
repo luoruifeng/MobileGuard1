@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import cn.edu.gdmec.android.mobileguard.SplashActivity;
+
 /**
  * Created by Jack on 2017/9/28.
  */
@@ -18,5 +20,10 @@ public class MyUtils {
             e.printStackTrace();
             return "";
         }
+    }
+
+    public static void installApk(SplashActivity splashActivity, String filename) {
+
+
     }
 }

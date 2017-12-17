@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="cn.edu.gdmec.android.mobileguard">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -16,14 +17,19 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG"/>
     <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
     <!--模块5-->
-    <!--手机杀毒部分-->
+    <!--手机杀毒部分sdk-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <!--清除缓存清理部分-->
     <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
+    <!--高级工具程序锁部分-->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermission"/>
     <!--<uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>-->
     <!--m9advancedtools permission-->
     <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
      <uses-permission android:name="android.permission.WRITE_SMS"/>-->
+
 
     <application
         android:name=".App"
@@ -34,8 +40,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- <activity android:name=".SplashActivity">-->
-        <activity android:name=".m1home.HomeActivity">
+        <activity android:name=".SplashActivity">
+            <!--<activity android:name=".m1home.HomeActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -43,7 +49,7 @@
             </intent-filter>
         </activity>
 
-        <!--<activity android:name=".m1home.HomeActivity"/>-->
+        <activity android:name=".m1home.HomeActivity"/>
 
         <activity android:name=".m2theftguard.LostFindActivity">
         </activity>
@@ -148,5 +154,7 @@
         <activity android:name=".m9advancedtools.SMSReducitionActivity"/>
         <service android:name=".m9advancedtools.service.AppLockService"
             android:persistent="true"/>
+
+
     </application>
 </manifest>

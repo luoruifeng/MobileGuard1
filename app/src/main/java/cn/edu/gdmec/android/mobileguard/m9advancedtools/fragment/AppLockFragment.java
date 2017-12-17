@@ -1,5 +1,6 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools.fragment;
 
+import android.content.Context;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,13 +30,14 @@ import cn.edu.gdmec.android.mobileguard.m9advancedtools.utils.AppInfoParser;
  */
 
 public class AppLockFragment extends Fragment {
-
+    private Context context;
     private TextView mLockTV;
     private ListView mLockLV;
     private AppLockDao dao;
-    List<AppInfo> mLockApps = new ArrayList<AppInfo>();
+    List<AppInfo> mLockApps = new ArrayList<AppInfo> ();
     private AppLockAdapter adapter;
-    private Uri uri = Uri.parse("content://cn.edu.gdmec.android.mobileguard.applock");
+    //private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);
+    private Uri uri = Uri.parse("content://cn.edu.gdmec.android.mobileguard.m9advancedtools.applock");
     private Handler mHandler = new Handler(){
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
@@ -54,6 +56,12 @@ public class AppLockFragment extends Fragment {
         };
     };
     private List<AppInfo> appInfos;
+    //模块
+    @Override
+    public void onAttach(Context context){
+        super.onAttach ( context );
+        this.context = context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,7 +78,7 @@ public class AppLockFragment extends Fragment {
         appInfos = AppInfoParser.getAppInfos(getActivity());
         fillData();
         initListener();
-        getActivity().getContentResolver().registerContentObserver(uri, true, new ContentObserver(new Handler()) {
+        getActivity().getContentResolver().registerContentObserver(uri, true, new ContentObserver (new Handler()) {
             @Override
             public void onChange(boolean selfChange) {
                 fillData();
