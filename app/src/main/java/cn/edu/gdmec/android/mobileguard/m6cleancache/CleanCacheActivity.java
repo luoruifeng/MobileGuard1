@@ -59,6 +59,8 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar ().hide (); //去掉标题栏
+
         setContentView( R.layout.activity_clean_cache);
         initView();
         pm = getPackageManager();
@@ -171,4 +173,3 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
         Toast.makeText(this,"清理完毕", Toast.LENGTH_SHORT).show();
     }
 }
-

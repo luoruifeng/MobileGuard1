@@ -67,7 +67,7 @@ public class SmsReducitionUtils {
                             max = new Integer(maxStr);
                             callBack.beforeSmsReducition(max);
                         } else if ("sms".equals(parser.getName())) {
-                            smsInfo = new SmsInfo();
+                            smsInfo = new SmsInfo ();
                         } else if ("body".equals(parser.getName())) {
                             try {
                                 smsInfo.body = Crypto.decrypt("123",

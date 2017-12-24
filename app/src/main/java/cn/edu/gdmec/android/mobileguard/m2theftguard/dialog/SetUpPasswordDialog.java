@@ -19,56 +19,51 @@ import cn.edu.gdmec.android.mobileguard.R;
  */
 
 public class SetUpPasswordDialog extends Dialog implements View.OnClickListener {
-    private TextView mTextView;
-    public EditText mFirstPWDET;
+    private TextView mTitleTV;
+    public TextView mFirstPWDET;
     public EditText mAffirmET;
     private MyCallBack myCallBack;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.setup_password_dialog);
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState){
+        setContentView ( R.layout.setup_password_dialog );
+        super.onCreate ( savedInstanceState );
         initView();
     }
 
-    public SetUpPasswordDialog(@NonNull Context context) {
+    public SetUpPasswordDialog(@NonNull Context context){
         super(context, R.style.dialog_custom);
     }
     private void initView() {
-        mTextView=(TextView) findViewById(R.id.tv_setuppwd_title);
-        mFirstPWDET=(EditText) findViewById(R.id.et_firstpwd);
-        mAffirmET=(EditText) findViewById(R.id.et_firstpwd);
-        findViewById(R.id.btn_ok).setOnClickListener(this);
-        findViewById(R.id.btn_cancel).setOnClickListener(this);
+        mTitleTV = (TextView) findViewById ( R.id.tv_setuppwd_title );
+        mFirstPWDET = (EditText) findViewById ( R.id.et_firstpwd );
+        mAffirmET = (EditText) findViewById ( R.id.et_affirm_password );
+        findViewById ( R.id.btn_ok ).setOnClickListener ( this );
+        findViewById ( R.id.btn_cancel ).setOnClickListener ( this );
     }
 
-    public void setTitle(String title) {
-        if (!TextUtils.isEmpty(title)) {
-            mTextView.setText(title);
+    public void setTitle(String title){
+        if(!TextUtils.isEmpty ( title )){
+            mTitleTV.setText ( title );
         }
     }
-        public void setCallBack(MyCallBack myCallBack){
-            this.myCallBack = myCallBack;
-        }
-        @Override
-        public void onClick(View view){
-            switch (view.getId()){
-                case R.id.btn_ok:
-                    System.out.print("SetupPasswordDialog");
-                    try {
-                        myCallBack.ok();
-                    } catch (NoSuchAlgorithmException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case R.id.btn_cancel:
-                    myCallBack.cancel();
-                    break;
-            }
-        }
 
-        public interface  MyCallBack{
-            void ok() throws NoSuchAlgorithmException;
-            void cancel();
+    public void setCallBack(MyCallBack myCallBack){
+        this.myCallBack = myCallBack;
+    }
+    @Override
+    public void onClick(View view) {
+        switch (view.getId ()){
+            case R.id.btn_ok:
+                System.out.print ( "SetupPasswordDialog" );
+                myCallBack.ok();
+                break;
+            case R.id.btn_cancel:
+                myCallBack.cancel();
+                break;
         }
+    }
+    public interface MyCallBack{
+        void ok();
+        void cancel();
+    }
 }

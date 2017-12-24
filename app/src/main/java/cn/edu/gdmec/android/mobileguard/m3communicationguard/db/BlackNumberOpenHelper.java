@@ -9,26 +9,23 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class BlackNumberOpenHelper extends SQLiteOpenHelper {
-    private static String DB_NAME = "my_info";
+    private static String DB_NAME="my_info";
     private static int VERSION = 1;
 
-    private static BlackNumberOpenHelper inStance = null;
-    public static BlackNumberOpenHelper getInStance(Context context){
-        if (inStance==null) {
-            return inStance;
+    private static BlackNumberOpenHelper instance=null;
+    public static BlackNumberOpenHelper getInstance(Context context){
+        if (instance==null){
+            instance=new BlackNumberOpenHelper (context,DB_NAME,null,VERSION);
         }
-        inStance = new BlackNumberOpenHelper(context,DB_NAME,null,VERSION);
-        return inStance;
+        return instance;
     }
-
     public BlackNumberOpenHelper(Context context, String name,
                                  SQLiteDatabase.CursorFactory factory,
-                                 int version) {
+                                 int version){
         super(context, name, factory, version);
         this.DB_NAME = name;
         this.VERSION = version;
     }
-
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase){
         sqLiteDatabase.execSQL ( "create table blacknumber" +
@@ -38,9 +35,8 @@ public class BlackNumberOpenHelper extends SQLiteOpenHelper {
                 "style varchar(255)," +
                 "mode integer)");
     }
-
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1){
 
     }
 }

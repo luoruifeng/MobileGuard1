@@ -15,7 +15,7 @@ import cn.edu.gdmec.android.mobileguard.R;
  * Created by LRF on 2017/12/10.
  */
 
-public class AdvancedToolsView extends RelativeLayout {
+public class AdvancedToolsView extends RelativeLayout{
 
     private TextView mDesriptionTV;
     private String desc = "";

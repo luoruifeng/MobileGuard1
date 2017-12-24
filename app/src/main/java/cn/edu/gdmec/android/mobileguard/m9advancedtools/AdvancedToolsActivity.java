@@ -74,3 +74,4 @@ public class AdvancedToolsActivity extends Activity implements View.OnClickListe
         startActivity(intent);
     }
 }
+

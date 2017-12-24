@@ -33,7 +33,7 @@ public class SplashActivity extends AppCompatActivity {
         mTvVersion.setText("版本号："+mVersion);
         //
         if (!hasPermission()){
-            //
+            //若用户未开启权限，则引导用户开启“Apps with usage access”权限
             startActivityForResult (
                     new Intent ( Settings.ACTION_USAGE_ACCESS_SETTINGS ),
                     MY_PERMISSIONS_REQUEST_PACKAGE_USAGE_STATS
@@ -49,7 +49,7 @@ public class SplashActivity extends AppCompatActivity {
                 MyUtils.installApk(SplashActivity.this,filename);
             }
         };
-        final VersionUpdateUtils versionUpdateUtils=new VersionUpdateUtils(mVersion,SplashActivity.this,downloadCallback,HomeActivity.class);
+        final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(mVersion,SplashActivity.this,downloadCallback,HomeActivity.class);
 
 
         new Thread(){
@@ -71,9 +71,9 @@ public class SplashActivity extends AppCompatActivity {
             }
         }.start();*/
 
-        //老师
-        startActivity(new Intent (this, HomeActivity.class));
-        finish();
+        //老师没有这个出现了  欢迎界面
+//        startActivity(new Intent (this, HomeActivity.class));
+//        finish();
     }
     private boolean hasPermission(){
         AppOpsManager appOps = (AppOpsManager)

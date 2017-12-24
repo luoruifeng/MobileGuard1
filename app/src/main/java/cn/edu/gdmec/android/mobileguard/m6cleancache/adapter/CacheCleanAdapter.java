@@ -49,8 +49,8 @@ public class CacheCleanAdapter extends BaseAdapter {
         if (view==null){
             holder=new ViewHolder();
             view=View.inflate(context, R.layout.item_cacheclean_list,null);
-            holder.mAppIconImgv=(ImageView) view.findViewById( R.id.imgv_appicon_cacheclean);
-            holder.mAppNameTV=(TextView)view.findViewById(R.id.tv_appname_cacheclean);
+            holder.mAppIconImgv=(ImageView ) view.findViewById( R.id.imgv_appicon_cacheclean);
+            holder.mAppNameTV=(TextView )view.findViewById(R.id.tv_appname_cacheclean);
             holder.mCacheSizeTV=(TextView)view.findViewById(R.id.tv_appsize_cacheclean);
             view.setTag(holder);
         }else{

@@ -39,7 +39,6 @@ public class HomeActivity extends AppCompatActivity {
     /** 申请权限 */
     private ComponentName componentName;
 
-    @RequiresApi(api = Build.VERSION_CODES.FROYO)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
