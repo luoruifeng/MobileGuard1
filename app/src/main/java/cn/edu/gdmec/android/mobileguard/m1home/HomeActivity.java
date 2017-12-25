@@ -178,10 +178,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
 
-            @Override
-            public void cancel() {
 
-            }
 
             @Override
             public void cancle(){
